@@ -14,7 +14,7 @@ userSchema.methods.generateHashedPassword = async function () {
   let salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
 };
-var User = mongoose.model("User", userSchema);
+var User = mongoose.model("user", userSchema);
 
 function validateUser(data) {
   const schema = Joi.object({

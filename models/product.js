@@ -4,7 +4,7 @@ var productSchema = mongoose.Schema({
   name: String,
   price: Number,
 });
-var Product = mongoose.model("Product", productSchema);
+var Product = mongoose.model("product", productSchema);
 
 function validateProduct(data) {
   const schema = Joi.object({

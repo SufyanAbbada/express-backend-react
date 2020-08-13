@@ -16,9 +16,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 const Register = (props) => {
   const classes = useStyles();
-  const [email, setEmail] = React.useState("usman.akram@gmail.com");
-  const [password, setPassword] = React.useState("usman");
-  const [name, setName] = React.useState("usman");
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [name, setName] = React.useState("");
   return (
     <div className={classes.container}>
       <div className={classes.child}>
@@ -29,7 +29,7 @@ const Register = (props) => {
           onChange={(e) => {
             setName(e.target.value);
           }}
-        />{" "}
+        />
         <br />
         <TextField
           label="email"
@@ -38,7 +38,7 @@ const Register = (props) => {
           onChange={(e) => {
             setEmail(e.target.value);
           }}
-        />{" "}
+        />
         <br />
         <TextField
           label="password"
@@ -48,7 +48,7 @@ const Register = (props) => {
           onChange={(e) => {
             setPassword(e.target.value);
           }}
-        />{" "}
+        />
         <br />
         <Button
           variant="contained"

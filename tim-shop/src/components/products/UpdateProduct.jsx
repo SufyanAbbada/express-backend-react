@@ -1,6 +1,5 @@
 import React from "react";
 import { Grid, TextField, Button } from "@material-ui/core";
-import axios from "axios";
 import productService from "../../services/ProductsService";
 import Admin from "../auth/Admin";
 

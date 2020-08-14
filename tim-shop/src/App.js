@@ -14,7 +14,7 @@ import NewProduct from "./components/products/NewProduct";
 import UpdateProduct from "./components/products/UpdateProduct";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (

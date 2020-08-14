@@ -6,11 +6,13 @@ import Admin from "../auth/Admin";
 
 const UpdateProduct = (props) => {
   const [name, setName] = React.useState("");
+  const [body, setBody] = React.useState("");
   const [price, setPrice] = React.useState(0);
   const id = props.match.params.id;
   React.useEffect(() => {
     productService.getSingleProduct(id).then((data) => {
       setName(data.name);
+      setBody(data.body);
       setPrice(data.price);
     });
   }, []);
@@ -31,6 +33,14 @@ const UpdateProduct = (props) => {
             }}
           />
           <TextField
+            label="body"
+            fullWidth
+            value={body}
+            onChange={(e) => {
+              setBody(e.target.value);
+            }}
+          />
+          <TextField
             label="price"
             fullWidth
             value={price}
@@ -47,7 +57,7 @@ const UpdateProduct = (props) => {
             color="primary"
             onClick={(e) => {
               productService
-                .updateProduct(id, { name, price })
+                .updateProduct(id, { name, body, price })
                 .then((data) => {
                   console.log(data);
                   props.history.push("/products");

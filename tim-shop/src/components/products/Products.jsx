@@ -10,7 +10,7 @@ import productService from "./../../services/ProductsService";
 import userService from "../../services/UserService";
 const useStyles = makeStyles((theme) => ({
   addBtn: {
-    position: "absolute",
+    position: "fixed",
     bottom: theme.spacing(2),
     right: theme.spacing(2),
   },
@@ -65,7 +65,12 @@ const Products = (props) => {
       {products.length === 0 ? (
         <p>There are no products</p>
       ) : (
-        <Grid container spacing={3}>
+        <Grid
+          container
+          spacing={3}
+          alignItems="center"
+          justify="center"
+        >
           {products.map((product, index) => (
             <SingleProduct key={index} product={product} onDelete={getData} />
           ))}
@@ -77,12 +82,9 @@ const Products = (props) => {
           variant="outlined"
           shape="rounded"
           onChange={(e, value) => {
-            console.log(value);
             props.history.push("/products/" + value);
           }}
-        />{" "}
-        Total: {total} Showing {(page - 1) * perPage} to{" "}
-        {(page - 1) * perPage + products.length}
+        />
       </Grid>
     </div>
   );

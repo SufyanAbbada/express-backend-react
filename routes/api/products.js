@@ -6,7 +6,7 @@ const admin = require("../../middlewares/admin");
 var { Product } = require("../../models/product");
 //get products
 router.get("/", async (req, res) => {
-  console.log(req.user);
+  //console.log(req.user);
   let page = Number(req.query.page ? req.query.page : 1);
   let perPage = Number(req.query.perPage ? req.query.perPage : 10);
   let skipRecords = perPage * (page - 1);
@@ -29,6 +29,7 @@ router.get("/:id", async (req, res) => {
 router.put("/:id", validateProduct, auth, admin, async (req, res) => {
   let product = await Product.findById(req.params.id);
   product.name = req.body.name;
+  product.body = req.body.body;
   product.price = req.body.price;
   await product.save();
   return res.send(product);
@@ -42,6 +43,7 @@ router.delete("/:id", auth, admin, async (req, res) => {
 router.post("/", validateProduct, auth, async (req, res) => {
   let product = new Product();
   product.name = req.body.name;
+  product.body = req.body.body;
   product.price = req.body.price;
   await product.save();
   return res.send(product);

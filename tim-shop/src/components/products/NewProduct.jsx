@@ -5,6 +5,7 @@ import productService from "./../../services/ProductsService";
 import Auth from "../auth/Auth";
 const NewProduct = (props) => {
   const [name, setName] = React.useState("");
+  const [body, setBody] = React.useState("");
   const [price, setPrice] = React.useState(0);
   return (
     <Auth>
@@ -20,6 +21,14 @@ const NewProduct = (props) => {
             value={name}
             onChange={(e) => {
               setName(e.target.value);
+            }}
+          />
+          <TextField
+            label="body"
+            fullWidth
+            value={body}
+            onChange={(e) => {
+              setBody(e.target.value);
             }}
           />
           <TextField
@@ -39,7 +48,7 @@ const NewProduct = (props) => {
             color="primary"
             onClick={(e) => {
               productService
-                .addProduct({ name, price })
+                .addProduct({ name, body, price })
                 .then((data) => {
                   console.log(data);
                   props.history.push("/products");

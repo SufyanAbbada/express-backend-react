@@ -23,6 +23,7 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import { Link } from "react-router-dom";
 import { Chart } from "react-google-charts";
+import userService from "./../services/UserService";
 
 const drawerWidth = 240;
 
@@ -82,13 +83,6 @@ function ResponsiveDrawer(props) {
             <ListItemText primary="Home" />
           </ListItem>
         </Link>
-
-        <ListItem button>
-          <ListItemIcon>
-            <CategoryIcon />
-          </ListItemIcon>
-          <ListItemText primary="Categories" />
-        </ListItem>
         <Link to="/products" className={classes.link}>
           <ListItem button>
             <ListItemIcon>
@@ -101,7 +95,7 @@ function ResponsiveDrawer(props) {
           <ListItemIcon>
             <ShoppingCartIcon />
           </ListItemIcon>
-          <ListItemText primary="Orders" />
+          <ListItemText primary="My Cart" />
         </ListItem>
         <Link to="/contact-us" className={classes.link}>
           <ListItem button>
@@ -111,18 +105,26 @@ function ResponsiveDrawer(props) {
             <ListItemText primary="Contact Us" />
           </ListItem>
         </Link>
-        <ListItem button>
-          <ListItemIcon>
-            <VpnKeyIcon />
-          </ListItemIcon>
-          <ListItemText primary="LogIN" />
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <ExitToAppIcon />
-          </ListItemIcon>
-          <ListItemText primary="LogOut" />
-        </ListItem>
+        {!userService.isLoggedIn() && (
+          <>
+            <Link to="/login" className={classes.link}>
+              <ListItem button>
+                <ListItemIcon>
+                  <VpnKeyIcon />
+                </ListItemIcon>
+                <ListItemText primary="Log In" />
+              </ListItem>
+            </Link>
+            <Link to="/register" className={classes.link}>
+              <ListItem button>
+                <ListItemIcon>
+                  <ExitToAppIcon />
+                </ListItemIcon>
+                <ListItemText primary="Register" />
+              </ListItem>
+            </Link>
+          </>
+        )}
       </List>
       <Divider />
       <List></List>

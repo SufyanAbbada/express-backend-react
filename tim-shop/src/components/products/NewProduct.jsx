@@ -2,6 +2,7 @@ import React from "react";
 import { Grid, TextField, Button } from "@material-ui/core";
 import productService from "./../../services/ProductsService";
 import Auth from "../auth/Auth";
+import { toast } from 'react-toastify';
 const NewProduct = (props) => {
   const [name, setName] = React.useState("");
   const [body, setBody] = React.useState("");
@@ -15,7 +16,7 @@ const NewProduct = (props) => {
         <Grid item xs={3}></Grid>
         <Grid item xs={6}>
           <TextField
-            label="name"
+            label="Product Name"
             fullWidth
             value={name}
             onChange={(e) => {
@@ -23,7 +24,7 @@ const NewProduct = (props) => {
             }}
           />
           <TextField
-            label="body"
+            label="Description"
             fullWidth
             value={body}
             onChange={(e) => {
@@ -31,7 +32,7 @@ const NewProduct = (props) => {
             }}
           />
           <TextField
-            label="price"
+            label="Model Price"
             fullWidth
             value={price}
             onChange={(e) => {
@@ -54,6 +55,9 @@ const NewProduct = (props) => {
                 })
                 .catch((err) => {
                   console.log(err);
+                  toast.error(err.response.data, {
+                    position: toast.POSITION.TOP_LEFT,
+                  });
                 });
             }}
           >

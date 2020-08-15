@@ -125,6 +125,16 @@ function ResponsiveDrawer(props) {
             </Link>
           </>
         )}
+        {userService.isLoggedIn() && (
+          <>
+            <ListItem button>
+              <ListItemIcon>
+                <ExitToAppIcon />
+              </ListItemIcon>
+              <ListItemText primary="Log Out" />
+            </ListItem>
+          </>
+        )}
       </List>
       <Divider />
       <List></List>

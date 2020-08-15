@@ -7,6 +7,7 @@ import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import productService from "./../../services/ProductsService";
 import userService from "../../services/UserService";
+import { toast } from 'react-toastify';
 const useStyles = makeStyles((theme) => ({
   addBtn: {
     position: "fixed",
@@ -30,6 +31,9 @@ const Products = (props) => {
       })
       .catch((err) => {
         console.log(err);
+        toast.error(err.response.data, {
+          position: toast.POSITION.TOP_LEFT,
+        });
       });
   };
   // getData();

@@ -10,6 +10,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
+import { toast } from 'react-toastify';
 
 const SingleProduct = (props) => {
   const { product, onDelete, history } = props;
@@ -74,6 +75,9 @@ const SingleProduct = (props) => {
                   })
                   .catch((err) => {
                     console.log(err);
+                    toast.error(err.response.data, {
+                      position: toast.POSITION.TOP_LEFT,
+                    });
                   });
               }}
             >

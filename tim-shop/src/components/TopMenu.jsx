@@ -32,6 +32,11 @@ const TopMenu = () => {
             Contact Us
           </Link>
         </Typography>
+        <Typography variant="h6">
+          <Link to="/cart" className={classes.link}>
+            My Cart
+          </Link>
+        </Typography>
         {!userService.isLoggedIn() ? (
           <>
             <Typography variant="h6">

@@ -10,7 +10,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 const SingleProduct = (props) => {
   const { product, onDelete, history } = props;
@@ -51,13 +51,20 @@ const SingleProduct = (props) => {
         </CardContent>
       </CardActionArea>
       <CardActions>
+        {userService.isLoggedIn() && (
+          <>
+            <Button size="small" color="primary" onClick={(e) => {}}>
+              Add to Cart
+            </Button>
+          </>
+        )}
         {userService.isAdmin() && (
           <>
             <Button
               size="small"
               color="primary"
               onClick={(e) => {
-                console.log("navigate to update");
+                //console.log("navigate to update");
                 history.push("/products/update/" + product._id);
               }}
             >
@@ -70,11 +77,11 @@ const SingleProduct = (props) => {
                 productService
                   .deleteProduct(product._id)
                   .then((data) => {
-                    console.log(data);
+                    // console.log(data);
                     onDelete();
                   })
                   .catch((err) => {
-                    console.log(err);
+                    //console.log(err);
                     toast.error(err.response.data, {
                       position: toast.POSITION.TOP_LEFT,
                     });

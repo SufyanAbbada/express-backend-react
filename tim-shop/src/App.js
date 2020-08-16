@@ -16,6 +16,7 @@ import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Cart from './components/cart';
 function App() {
   return (
     <Router>
@@ -27,6 +28,7 @@ function App() {
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
             <Route path="/contact-us" exact component={ContactUs} />
+            <Route path="/cart" exact component={Cart} />
             <Route path="/products/new" component={NewProduct} />
             <Route path="/products/update/:id" component={UpdateProduct} />
             <Route path="/products/:page?" component={Products} />

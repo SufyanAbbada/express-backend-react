@@ -24,6 +24,7 @@ import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import { Link } from "react-router-dom";
 import { Chart } from "react-google-charts";
 import userService from "./../services/UserService";
+import withRouter from "./auth/Auth";
 
 const drawerWidth = 240;
 
@@ -91,12 +92,14 @@ function ResponsiveDrawer(props) {
             <ListItemText primary="Products" />
           </ListItem>
         </Link>
-        <ListItem button>
-          <ListItemIcon>
-            <ShoppingCartIcon />
-          </ListItemIcon>
-          <ListItemText primary="My Cart" />
-        </ListItem>
+        <Link to="/cart" className={classes.link}>
+          <ListItem button>
+            <ListItemIcon>
+              <ShoppingCartIcon />
+            </ListItemIcon>
+            <ListItemText primary="My Cart" />
+          </ListItem>
+        </Link>
         <Link to="/contact-us" className={classes.link}>
           <ListItem button>
             <ListItemIcon>
@@ -127,7 +130,14 @@ function ResponsiveDrawer(props) {
         )}
         {userService.isLoggedIn() && (
           <>
-            <ListItem button>
+            <ListItem
+              button
+              onClick={(e) => {
+                userService.logout();
+                props.history.push("/");
+                //window.location.reload();
+              }}
+            >
               <ListItemIcon>
                 <ExitToAppIcon />
               </ListItemIcon>
